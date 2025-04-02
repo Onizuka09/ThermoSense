@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid-EYE Camera Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Grid-EYE 8x8 Thermal Camera</h1>
+            <div class="camera-status">
+                <span id="status-indicator" class="offline">●</span>
+                <span id="status-text">Camera Offline</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="settings-panel">
+                <h2>Camera Controls</h2>
+                
+                <div class="control-group">
+                    <button id="toggle-camera" class="btn">Start Camera</button>
+                </div>
+                
+                <div class="control-group">
+                    <button id="capture-btn" class="btn" disabled>Capture Image</button>
+                </div>
+                
+                <div class="control-group">
+                    <button id="panorama-btn" class="btn" disabled>Start Panorama</button>
+                    <button id="stop-panorama-btn" class="btn" disabled>Stop Panorama</button>
+                </div>
+                
+                <div class="control-group slider-control">
+                    <label for="interval-slider">Capture Interval (seconds):</label>
+                    <input type="range" id="interval-slider" min="1" max="60" value="5">
+                    <span id="interval-value">5</span>
+                </div>
+                
+                <div class="control-group slider-control">
+                    <label for="max-pics-slider">Max Panorama Pictures:</label>
+                    <input type="range" id="max-pics-slider" min="3" max="30" value="10">
+                    <span id="max-pics-value">10</span>
+                </div>
+                
+                <div class="thermal-settings">
+                    <h3>Thermal Settings</h3>
+                    <div class="control-group">
+                        <label for="min-temp">Min Temp (°C):</label>
+                        <input type="number" id="min-temp" value="20" step="0.1">
+                    </div>
+                    <div class="control-group">
+                        <label for="max-temp">Max Temp (°C):</label>
+                        <input type="number" id="max-temp" value="40" step="0.1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-panel">
+                <div class="video-container">
+                    <canvas id="thermal-canvas" width="400" height="400"></canvas>
+                    <div id="no-feed" class="no-feed-message">
+                        Camera feed will appear here when connected
+                    </div>
+                </div>
+                
+                <div class="capture-info">
+                    <div id="panorama-progress" class="hidden">
+                        <h3>Panorama Progress</h3>
+                        <progress id="panorama-progress-bar" value="0" max="100"></progress>
+                        <span id="panorama-count">0/0 pictures taken</span>
+                    </div>
+                    
+                    <div class="gallery">
+                        <h3>Captured Images</h3>
+                        <div id="image-gallery"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
