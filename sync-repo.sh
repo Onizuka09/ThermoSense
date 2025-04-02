@@ -1,2 +1,2 @@
-#!/bin/bash 
-rsync -avz --exclude '.git' /home/moktar/IoT_projects/ThermoSense pi@raspberrypi.local:/home/pi/thermal_camera/
+#!/bin/bash
+rsync -avz --exclude '.git' --exclude 'env' . pi@raspberrypi.local:/home/pi/ThermoSense
